@@ -5,3 +5,8 @@ pytz
 scipy
 six
 tqdm
+geopy
+tensorflow
+sklearn
+matplotlib
+seaborn
