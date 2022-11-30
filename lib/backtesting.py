@@ -85,6 +85,21 @@ class Backtesting(Model):
                 'start_date': '2015-08-21',
                 'end_date': '2016-05-15'
             },
+            {
+                'name': '2014-2015',
+                'start_date': '2014-08-23',
+                'end_date': '2015-05-23'
+            },
+            {
+                'name': '2013-2014',
+                'start_date': '2013-08-17',
+                'end_date': '2014-05-18'
+            },
+            {
+                'name': '2012-2013',
+                'start_date': '2012-08-18',
+                'end_date': '2013-06-01'
+            },
         ]
 
         self.seasons_half = [  # TODO: find the correct dates
@@ -155,6 +170,36 @@ class Backtesting(Model):
             },
             {
                 'name': '2015-2016-1',
+                'start_date': '2015-08-21',
+                'end_date': '2016-05-15'
+            },
+            {
+                'name': '2014-2015-1',
+                'start_date': '2015-08-21',
+                'end_date': '2016-05-15'
+            },
+            {
+                'name': '2014-2015-2',
+                'start_date': '2015-08-21',
+                'end_date': '2016-05-15'
+            },
+            {
+                'name': '2013-2014-1',
+                'start_date': '2015-08-21',
+                'end_date': '2016-05-15'
+            },
+            {
+                'name': '2013-2014-2',
+                'start_date': '2015-08-21',
+                'end_date': '2016-05-15'
+            },
+            {
+                'name': '2012-2013-1',
+                'start_date': '2015-08-21',
+                'end_date': '2016-05-15'
+            },
+            {
+                'name': '2012-2013-2',
                 'start_date': '2015-08-21',
                 'end_date': '2016-05-15'
             },

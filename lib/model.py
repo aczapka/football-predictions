@@ -64,7 +64,7 @@ class Model(Dataset):
 
         log_likelihood = (log_parameter_tau + poisson.logpmf(goals_home, np.exp(log_parameter_lambda)) +
                           poisson.logpmf(goals_away, np.exp(log_parameter_mu))
-                         )  # logarithm of a product is sum of logarithms
+                          )  # logarithm of a product is sum of logarithms
 
         return log_likelihood
 
@@ -111,11 +111,13 @@ class Model(Dataset):
         optimization = minimize(
             self.total_minus_log_likelihood,  # function to minimize
             log_parameters_initial_array,
-            method='trust-constr',
+            # method='trust-constr',
+            method='BFGS',  # both "BFGS" and "trust-constr" work well, but the former is twice as fast
             options={
                 'disp': True,
                 'maxiter': max_iterations,
-                'verbose': 3
+                # 'verbose': 3,
+                'return_all': True,
             },
             # constraints=[{'type':'eq','fun':lambda x:sum(x[:20])-20}],
         )

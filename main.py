@@ -2,6 +2,7 @@ from dataset import Dataset
 from model import Model
 from backtesting import Backtesting
 import pandas as pd
+
 """
 Examples of usage:
 """
@@ -37,7 +38,7 @@ model.load_complete_dataset()
 model.clip_complete_dataset(date_start='2020-09-12', date_end='2021-05-23')
 model.train(max_iterations=400)
 
-# predict future
-df_predictors = pd.read_csv('./input/future_predictors.csv', sep=';')
-model.predict_future(df_predictors)
-model.save_prediction_future(file_suffix='train_' + '2020-2021' + '_predict_' + '2021-2022')
+# predict future (to be developed in the future)
+# df_predictors = pd.read_csv('./input/future_predictors.csv', sep=';')
+# model.predict_future(df_predictors)
+# model.save_prediction_future(file_suffix='train_' + '2020-2021' + '_predict_' + '2021-2022')
