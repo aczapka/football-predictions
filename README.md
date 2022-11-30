@@ -1,46 +1,60 @@
 Football Predictions
 ====================
 
-This model is designed to make football predictions based on historical data using Poisson regression.
-
-Obtaining historical data for training
-------------------
-
-First, the model needs a historical dataset which includes the following information about each match:
-
-* Date of the match
-* Home team
-* Away team
-* Home goals
-* Away goals
-
-In this implementation, data from the Spanish first division (_Liga de Primera División_) will be downloaded.
-
-Model training
+Description
 ----------------------
+This project tries to implement a successful football betting strategy.
 
-The model used is a bivariate Poisson family with the following parameters:
+In order to achieve that, it uses the following information from Spanish First Division:
 
-* Each team's attack.
-* Each team's defence.
-* Home team's "playing at home" effect.
-* Global dependence correction.
+* Historical data of match full time results.
+* Historical data of bookmakers odds.
+* A bivariate Poisson regression prediction model.
+* Additional information.
 
-The training consist in maximizing the likelihood of the parametric model.
-This has been implemented in terms of logarithms to make the calculation easier.
+All this data is finally combined in a neural network metamodel specifically tuned to forecast draws with high precision.
 
+For more detailed information about the idea behind this project, please check `report.pdf`.
 
-Model predictions
+Dependencies and installation
 ----------------------
+To use this code, just download it and install Python along with the libraries listed in `requirements.txt`.
 
-Once the model has been trained, it can predict matches that occurred in the past or that will be played in the future.
+Common usage
+----------------------
+The first step is to execute `main.py`. This will take care of all the Poisson regression set up:
 
-The predict in the past feature can be used for model validation.
-In order to avoid overfitting issues and to simulate real world performance,
-a walk forward analysis method has been implemented.
+* The `dataset.py` module will download and save all the historical data needed.
+* The `model.py` module will set up the model, train it and save the optimized parameters.
+* The `backtesting.py` module will split the historical data and train the model iteratively in a realistic "walk forward analysis" fashion.
+
+After this, all the predictions of the model will be stored in the `output/predictions_past` folder.
+
+Now, it is time to play around with this new information and try to set a successful metamodel. This is performed with several Jupyter notebooks in the `metamodel` folder. They are designed in this order:
+
+1. `01_download_dataset_all_columns.ipynb`: This code downloads the raw dataset.
+1. `02_retrieve_bookmaker_predictions.ipynb`: In this notebook, to odds historical data of one of the bookmakers is
+   extracted from the dataset.
+1. `03_join_predictions.ipynb`: This script joins the odds of the bookmaker (which is their probabilistic prediction) with the Poisson regression probabilistic prediction generated with the code of this project.
+1. `04_data_enrichment.ipynb`: The two probabilistic predictions are now being enriched with some additional data.
+1. `05_betting_strategy.ipynb`: Now that all data is prepared, this notebook performs an analysis searching for a successful betting strategy. The conclusion is: trying to predict the draws.
+1. `06_neural_network_metamodel.ipynb`: A neural network metamodel is set up and trained in order to predict the draws
+   with the highest precision possible using all the data collected in the past steps. Then, it is evaluated to find if this betting strategy is profitable.
 
 Future improvements
 ----------------------
+This project is in an early stage of development and it does not even have tests. Bugs and errors are to be expected. Use it at your own risk and within the applicable legal limits. Please check `DISCLAIMER.md`.
 
-The idea is to analyze the output of this model in order to understand its strong and weak points.
-These predictions can be used as an input to a more complex metamodel which further improves the accuracy.
+For sure, the algorithm could be improved including more variables, tuning the model and the metamodel, optimizing, hyperparameters, trying to use other dataset, etc.
+
+The validation of the results is also poor right now.
+
+Author, license and acknowledgements 
+----------------------
+Author: Alberto Czapka
+https://www.linkedin.com/in/alberto-czapka/
+
+This project is licensed under the MIT license, please check `LICENSE.md`.
+
+Theoretical background:
+Dixon, M. J., & Coles, S. G. (1997). Modelling Association Football Scores and Inefficiencies in the Football Betting Market. Journal of the Royal Statistical Society. Series C (Applied Statistics), 46(2), 265–280. http://www.jstor.org/stable/2986290
