@@ -18,7 +18,10 @@ For more detailed information about the idea behind this project, please check `
 
 Dependencies and installation
 ----------------------
-To use this code, just download it and install Python along with the libraries listed in `requirements.txt`.
+To use this code, just 
+1. Download it.
+2. Install Python along with the libraries listed in `requirements.txt`.
+3. Mark the `lib` directory as sources root.
 
 Common usage
 ----------------------
