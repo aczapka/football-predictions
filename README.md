@@ -5,6 +5,25 @@ Description
 ----------------------
 This project tries to implement a successful football betting strategy.
 
+### Motivation and key questions
+As a summary, we are trying to answer this questions:
+
+* How often do the home and away teams win?
+* Are the odds of different bookmakers similar?
+* How accurate are the predictions of the bookmakers?
+* Have the predictions of the bookmakers changed over time?
+* Are the odds of the bookmakers properly estimated?
+
+For a visual summary of this preliminary ideas, please check the notebook: 
+`medium_articles_notebooks/medium_can_we_guess_football_results_based_odds_bookmakers.ipynb` 
+and the associated Medium article: 
+https://medium.com/@aczapka/can-we-guess-football-results-based-on-the-odds-of-the-bookmakers-c91846813262
+
+The last question implies if we can make a better prediction than the bookmaker and this is being further developed in 
+this project.
+
+### Data and modeling
+
 In order to achieve that, it uses the following information from Spanish First Division:
 
 * Historical data of match full time results.
@@ -15,6 +34,15 @@ In order to achieve that, it uses the following information from Spanish First D
 All this data is finally combined in a neural network metamodel specifically tuned to forecast draws with high precision.
 
 For more detailed information about the idea behind this project, please check `report.pdf`.
+
+### Conclusions
+
+As far now, the conclusion is that the predictions of the bookmakers, despite having some flaws, are accurate enough.
+There is no easy way to beat them globally and build a successful betting strategy.
+
+One of the lines of work that could be more promising is to focus exclusively on predicting draws with high precision. 
+But this is not easy to achieve. 
+For now perhaps we have achieved some partial successes whose consistency is yet to be validated.
 
 Dependencies and installation
 ----------------------
